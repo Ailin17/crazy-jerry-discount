@@ -154,7 +154,7 @@ function CartBadge({count}: {count: number | null}) {
         } as CartViewPayload);
       }}
     >
-      Cart {count === null ? <span>&nbsp;</span> : count}
+      Cart test change{count === null ? <span>&nbsp;</span> : count}
     </a>
   );
 }
