@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+
+// Colors
+$color-ivory: #faf9f6;
+$color-soft-taupe: #d8cfc4;
+$color-deep-charcoal: #333333;
+$color-dusty-rose: #e4b7a0;
+$color-sage-green: #a2b9a1;
+
+$color-ivory: #faf9f6; // Neutral background / text
+$color-navy: #1b2a49; // Deep navy for primary elements
+$color-soft-pink: #f7d6d0; // Light pink for backgrounds / accents
+$color-blush: #e4998d; // Dusty pink for highlights
+$color-deep-navy: #0f1a30; // Darker navy for headers / footers
+$color-rose-gold: #e4a0af; // Warm accent, like dusty-rose
+$color-gray-blue: #b0c1d2; // Soft neutral for subtle backgrounds
+
+// Typography
+$font-heading: 'Playfair Display',
+serif;
+$font-body: 'Roboto',
+sans-serif;
+$font-accent: 'Montserrat',
+sans-serif;
+
+// Font sizes
+$fs-h1: 3rem;
+$fs-h2: 2.25rem;
+$fs-h3: 1.75rem;
+$fs-body: 1rem;
+$fs-small: 0.875rem;
+
+// Spacing
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 32px;
+$space-xl: 64px;

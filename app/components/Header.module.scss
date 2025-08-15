@@ -1,0 +1,70 @@
+@import '../styles/main.scss';
+
+.header {
+  align-items: center;
+  background: $color-navy;
+  color: $color-ivory;
+  display: flex;
+  height: var(--header-height);
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  a {
+    display: grid;
+  }
+
+  .cartBadge {
+    display: flex;
+    gap: .25rem;
+  }
+
+  svg {
+    color: $color-ivory;
+  }
+}
+
+.menuMobileToggle {
+  @media (min-width: 48em) {
+    display: none;
+  }
+}
+
+.header-menu-mobile {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+}
+
+.header-menu-desktop {
+  display: none;
+  grid-gap: 1rem;
+
+  @media (min-width: 45em) {
+    display: flex;
+    grid-gap: 1rem;
+    margin-left: 3rem;
+  }
+}
+
+.header-menu-item {
+  cursor: pointer;
+}
+
+.headerCtas {
+  align-items: center;
+  display: flex;
+  grid-gap: .5rem;
+  margin-left: auto;
+
+  >* {
+    min-width: fit-content;
+  }
+}
+
+@include media-query($s-medium-up) {
+  .headerCtas {
+    grid-gap: 1rem;
+  }
+}

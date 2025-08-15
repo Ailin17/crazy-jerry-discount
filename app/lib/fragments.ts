@@ -203,6 +203,21 @@ export const HEADER_QUERY = `#graphql
         }
       }
     }
+    metafield(namespace: "custom", key: "logo") {
+      id
+      value
+      reference {
+        ... on MediaImage {
+          image {
+            id
+            url
+            altText
+            width
+            height
+          }
+        }
+      }
+    }
   }
   query Header(
     $country: CountryCode
