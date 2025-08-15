@@ -3,19 +3,18 @@
 .recommendedProducts {
   padding: 2rem 1rem;
   position: relative;
-  background-color: $color-rose-gold;
+  background-color: $color-ivory;
 
   .heading {
     font-size: 1.5rem;
-    font-weight: 700;
     margin-bottom: 1rem;
-    text-align: center;
+    text-align: right;
   }
 
   .stamp {
     position: sticky;
     top: 0;
-
+    margin: -120px 0;
   }
 
   .carousel {

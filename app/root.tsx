@@ -152,19 +152,16 @@ export function Layout({ children }: { children?: React.ReactNode }) {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="stylesheet" href={resetStyles}></link>
         <link rel="stylesheet" href={appStyles}></link>
+        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Xanh+Mono:ital@0;1&display=swap"
           rel="stylesheet"
-        />
+        ></link>
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap"
           rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
-          rel="stylesheet"
-        />
-
+        ></link>
         <Meta />
         <Links />
       </head>

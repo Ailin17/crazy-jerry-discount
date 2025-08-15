@@ -6,6 +6,7 @@ import { ProductItem } from '~/components/ProductItem'
 import { PAGE_QUERY } from '~/graphql/Page.graphql'
 import Hero, { LinkType } from '~/components/Hero'
 import RecommendedProducts from '~/components/RecommendedProducts'
+import { AnimationTest, AnimationTest2 } from '~/components/AnimationTest'
 
 export async function loader({ context }: LoaderFunctionArgs) {
   const deferredData = loadDeferredData(context)
@@ -77,6 +78,8 @@ export default function Homepage() {
       {recommendedProducts && (
         <RecommendedProducts products={recommendedProducts} />
       )}
+      <AnimationTest />
+      <AnimationTest2 />
     </div>
   )
 }
@@ -95,28 +98,6 @@ function FeaturedCollection({ collection }: { collection: any }) {
     </a>
   )
 }
-
-/** Recommended Products Component */
-// function RecommendedProducts({ products }: { products: Promise<any> }) {
-//   return (
-//     <div className="recommended-products">
-//       <h2>Recommended Products</h2>
-//       <Suspense fallback={<div>Loading...</div>}>
-//         <Await resolve={products}>
-//           {(response) => (
-//             <div className="recommended-products-grid">
-//               {response
-//                 ? response.products.nodes.map((product: any) => (
-//                     <ProductItem key={product.id} product={product} />
-//                   ))
-//                 : null}
-//             </div>
-//           )}
-//         </Await>
-//       </Suspense>
-//     </div>
-//   )
-// }
 
 /** GraphQL Queries */
 const FEATURED_COLLECTION_QUERY = `#graphql

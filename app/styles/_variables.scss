@@ -1,7 +1,15 @@
+/* fonts.scss */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Xanh+Mono:ital@0;1&display=swap');
 
+
+$font-heading: math;
+$font-body: 'Playfair Display',
+sans-serif;
+$font-accent: 'Montserrat',
+sans-serif;
 // Colors
 $color-ivory: #faf9f6;
 $color-soft-taupe: #d8cfc4;
@@ -17,13 +25,6 @@ $color-deep-navy: #0f1a30; // Darker navy for headers / footers
 $color-rose-gold: #e4a0af; // Warm accent, like dusty-rose
 $color-gray-blue: #b0c1d2; // Soft neutral for subtle backgrounds
 
-// Typography
-$font-heading: 'Playfair Display',
-serif;
-$font-body: 'Roboto',
-sans-serif;
-$font-accent: 'Montserrat',
-sans-serif;
 
 // Font sizes
 $fs-h1: 3rem;
