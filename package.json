@@ -10,7 +10,8 @@
     "preview": "shopify hydrogen preview --build",
     "lint": "eslint --no-error-on-unmatched-pattern .",
     "typecheck": "tsc --noEmit",
-    "codegen": "shopify hydrogen codegen"
+    "codegen": "shopify hydrogen codegen",
+    "format": "prettier --write ."
   },
   "prettier": "@shopify/prettier-config",
   "dependencies": {
@@ -19,10 +20,13 @@
     "graphql": "^16.10.0",
     "graphql-tag": "^2.12.6",
     "isbot": "^5.1.22",
+    "lucide-react": "^0.539.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "7.6.0",
-    "react-router-dom": "7.6.0"
+    "react-router-dom": "7.6.0",
+    "sass": "^1.90.0",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.5",
@@ -52,7 +56,8 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
-    "prettier": "^3.4.2",
+    "prettier": "^3.6.2",
+    "sass-embedded": "^1.90.0",
     "typescript": "^5.2.2",
     "vite": "^6.2.4",
     "vite-tsconfig-paths": "^4.3.1"

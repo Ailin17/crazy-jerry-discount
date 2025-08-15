@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router';
+import {Link, useNavigate} from 'react-router';
 import {type MappedProductOptions} from '@shopify/hydrogen';
 import type {
   Maybe,
@@ -71,7 +71,7 @@ export function ProductForm({
                   return (
                     <button
                       type="button"
-                      className={`product-options-item${
+                      className={`btn-secondary product-options-item${
                         exists && !selected ? ' link' : ''
                       }`}
                       key={option.name + name}

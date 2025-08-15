@@ -1,6 +1,7 @@
 import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import { useLoaderData, type MetaFunction } from 'react-router';
+import {useLoaderData, type MetaFunction} from 'react-router';
 import {redirectIfHandleIsLocalized} from '~/lib/redirect';
+import {PAGE_QUERY} from '~/graphql/Page.graphql';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [{title: `Hydrogen | ${data?.page.title ?? ''}`}];
@@ -60,7 +61,15 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Page() {
   const {page} = useLoaderData<typeof loader>();
+  const heading = page.metafields.find(
+    (f: any) => f.key === 'hero_heading',
+  )?.value;
+  const paragraph = page.metafields.find(
+    (f: any) => f.key === 'hero_paragraph',
+  )?.value;
+  const imageMeta = page.metafields.find((f: any) => f.key === 'hero_image');
 
+  console.log('test', heading, paragraph, imageMeta);
   return (
     <div className="page">
       <header>
@@ -70,23 +79,3 @@ export default function Page() {
     </div>
   );
 }
-
-const PAGE_QUERY = `#graphql
-  query Page(
-    $language: LanguageCode,
-    $country: CountryCode,
-    $handle: String!
-  )
-  @inContext(language: $language, country: $country) {
-    page(handle: $handle) {
-      handle
-      id
-      title
-      body
-      seo {
-        description
-        title
-      }
-    }
-  }
-` as const;

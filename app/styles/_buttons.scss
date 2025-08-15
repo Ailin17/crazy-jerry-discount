@@ -1,0 +1,13 @@
+.btn-primary {
+  @include button($color-rose-gold, $color-ivory);
+}
+
+.btn-secondary {
+  @include button($color-ivory, $color-deep-navy);
+  border: 1px solid $color-deep-navy;
+
+  &:hover {
+    background-color: $color-rose-gold;
+    color: $color-ivory;
+  }
+}
