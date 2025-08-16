@@ -18,8 +18,10 @@ export const PAGE_QUERY = `#graphql
         { namespace: "custom", key: "hero_heading" },
         { namespace: "custom", key: "hero_paragraph" },
         { namespace: "custom", key: "hero_image" },
+        { namespace: "custom", key: "hero_image_2" },
         { namespace: "custom", key: "cta_link" },
-        { namespace: "custom", key: "cta_link_2" }
+        { namespace: "custom", key: "cta_link_2" },
+        { namespace: "custom", key: "video_banner" }
       ]) {
         key
         type
@@ -30,6 +32,14 @@ export const PAGE_QUERY = `#graphql
               altText
               width
               height
+            }
+          }
+                    ... on Video {
+            mediaContentType
+            sources {
+              url
+              format
+              mimeType
             }
           }
         }

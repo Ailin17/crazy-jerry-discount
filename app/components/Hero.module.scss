@@ -1,6 +1,4 @@
-@import '../styles/main.scss';
-
-
+@use '../styles/main'as *;
 
 // .Hero {
 //   width: 100%;
@@ -74,42 +72,59 @@
 // }
 .hero {
   display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: 50% 50%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr min-content 2fr;
   height: 100vh;
   gap: 1rem;
-}
 
-.leftImage,
-.rightTopImage,
-.rightBottomText {
-  position: relative;
-  overflow: hidden;
-}
+  .leftImage,
+  .rightTopImage,
+  .rightBottomText {
+    position: relative;
+    overflow: hidden;
+  }
 
-.leftImage {
-  grid-row: 1 / span 2;
-  background-size: cover;
-  background-position: center;
-}
+  .leftImage {
+    grid-row: 3/4;
+    background-size: cover;
+    background-position: center;
+  }
 
-.rightTopImage {
-  background-size: cover;
-  background-position: center;
-}
+  .rightTopImage {
+    background-size: cover;
+    background-position: center;
+  }
 
-.rightBottomText {
-  padding: 2rem;
-  background: white;
-}
+  .rightBottomText {
+    padding: 2rem;
+    background: white;
+  }
 
-.revealOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff; // or your overlay color
-  pointer-events: none;
-  z-index: 0;
+  .revealOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; // or your overlay color
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0 0 0;
+    align-items: center;
+  }
+
+  @include media-query($s-medium-up) {
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: 6fr 4fr;
+    gap: 1rem;
+
+    .leftImage {
+      grid-row: 1 / span 2;
+    }
+  }
 }

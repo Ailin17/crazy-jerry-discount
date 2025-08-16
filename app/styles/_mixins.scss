@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "sass:meta";
+@use 'variables'as *;
+
 // Button mixin
 @mixin button($bg, $color, $padding: $space-sm $space-sm, $radius: 8px) {
   background-color: $bg;
@@ -9,6 +13,7 @@
   font-family: $font-accent;
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;
+  min-width: 2.5rem;
 
   &:hover {
     filter: brightness(0.9);
@@ -17,6 +22,7 @@
 
 // Typography mixin
 @mixin heading($level) {
+  color: $color-navy;
 
   @if $level==1 {
     // filter: drop-shadow(0px 1px 1px $color-deep-navy);
@@ -86,8 +92,8 @@
   $breakpoint-found: false;
 
   @each $breakpoint in $s-screen--breakpoints {
-    $name: nth($breakpoint, 1);
-    $declaration: nth($breakpoint, 2);
+    $name: list.nth($breakpoint, 1);
+    $declaration: list.nth($breakpoint, 2);
 
     @if $media-query==$name and $declaration {
       $breakpoint-found: true;

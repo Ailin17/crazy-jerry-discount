@@ -1,4 +1,4 @@
-@import '../styles/main.scss';
+@use '../styles/main'as *;
 
 .header {
   align-items: center;
@@ -34,16 +34,15 @@
 .header-menu-mobile {
   display: flex;
   flex-direction: column;
-  grid-gap: 1rem;
+  gap: 1rem; // replaced grid-gap
 }
 
 .header-menu-desktop {
   display: none;
-  grid-gap: 1rem;
+  gap: 1rem;
 
   @media (min-width: 45em) {
     display: flex;
-    grid-gap: 1rem;
     margin-left: 3rem;
   }
 }
@@ -55,7 +54,7 @@
 .headerCtas {
   align-items: center;
   display: flex;
-  grid-gap: .5rem;
+  gap: .5rem;
   margin-left: auto;
 
   >* {
@@ -63,8 +62,8 @@
   }
 }
 
-@include media-query($s-medium-up) {
-  .headerCtas {
-    grid-gap: 1rem;
-  }
-}
+// @include mixins.media-query($s-medium-up) {
+//   .headerCtas {
+//     gap: 1rem;
+//   }
+// }

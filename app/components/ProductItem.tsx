@@ -1,51 +1,50 @@
-import {Link} from 'react-router';
-import {Image as ImageComp, Money, Video as VideoComp} from '@shopify/hydrogen';
+import { Link } from 'react-router'
+import {
+  Image as ImageComp,
+  Money,
+  Video as VideoComp,
+} from '@shopify/hydrogen'
 import type {
   ProductItemFragment,
   CollectionItemFragment,
-  RecommendedProductFragment,
-} from 'storefrontapi.generated';
-import {useVariantUrl} from '~/lib/variants';
-import styles from './ProductItem.module.scss';
+} from 'storefrontapi.generated'
+import { useVariantUrl } from '~/lib/variants'
+import styles from './ProductItem.module.scss'
 import {
   Maybe,
   Video,
   VideoSource,
   Image,
-} from '@shopify/hydrogen/storefront-api-types';
-import type * as StorefrontAPI from '@shopify/hydrogen/storefront-api-types';
+} from '@shopify/hydrogen/storefront-api-types'
+import type * as StorefrontAPI from '@shopify/hydrogen/storefront-api-types'
 
 type VideoMedia = {
-  __typename: 'Video';
+  __typename: 'Video'
 } & Pick<Video, 'id' | 'mediaContentType'> & {
-    previewImage?: Maybe<Pick<Image, 'url' | 'height' | 'width'>>;
-    sources: Array<Pick<VideoSource, 'url' | 'format'>>;
-  };
+    previewImage?: Maybe<Pick<Image, 'url' | 'height' | 'width'>>
+    sources: Array<Pick<VideoSource, 'url' | 'format'>>
+  }
 
-type ImageMedia = {__typename: 'MediaImage'} & Pick<
+type ImageMedia = { __typename: 'MediaImage' } & Pick<
   StorefrontAPI.MediaImage,
   'id' | 'mediaContentType'
 > & {
     image?: StorefrontAPI.Maybe<
       Pick<StorefrontAPI.Image, 'url' | 'height' | 'width' | 'altText'>
-    >;
-  };
+    >
+  }
 
 export function ProductItem({
   product,
   loading,
 }: {
-  product:
-    | CollectionItemFragment
-    | ProductItemFragment
-    | RecommendedProductFragment;
-  loading?: 'eager' | 'lazy';
+  product: CollectionItemFragment | ProductItemFragment
+  loading?: 'eager' | 'lazy'
 }) {
-  const variantUrl = useVariantUrl(product.handle);
-  const image = product.featuredImage;
-  const secondMedia = product.media?.edges?.[1]?.node;
-  const hasVideo = secondMedia?.mediaContentType === 'VIDEO';
-
+  const variantUrl = useVariantUrl(product.handle)
+  const image = product.featuredImage
+  const secondMedia = product.media?.edges?.[1]?.node
+  const hasVideo = secondMedia?.mediaContentType === 'VIDEO'
   return (
     <Link
       className="product-item"
@@ -98,5 +97,5 @@ export function ProductItem({
         <Money data={product.priceRange.minVariantPrice} />
       </small>
     </Link>
-  );
+  )
 }

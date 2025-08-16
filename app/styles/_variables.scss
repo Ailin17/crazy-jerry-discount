@@ -1,15 +1,22 @@
-/* fonts.scss */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Xanh+Mono:ital@0;1&display=swap');
+@font-face {
+  font-family: 'Xanh Mono';
+  src: url('../assets/fonts/Xanh_Mono/XanhMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Xanh Mono';
+  src: url('../assets/fonts/Xanh_Mono/XanhMono-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
 
-$font-heading: math;
-$font-body: 'Playfair Display',
-sans-serif;
-$font-accent: 'Montserrat',
-sans-serif;
+$font-heading: 'Xanh Mono';
+$font-body:'Xanh Mono';
+$font-accent: 'Xanh Mono';
 // Colors
 $color-ivory: #faf9f6;
 $color-soft-taupe: #d8cfc4;
@@ -19,7 +26,7 @@ $color-sage-green: #a2b9a1;
 
 $color-ivory: #faf9f6; // Neutral background / text
 $color-navy: #1b2a49; // Deep navy for primary elements
-$color-soft-pink: #f7d6d0; // Light pink for backgrounds / accents
+$color-soft-pink: #F0E2E7; // Light pink for backgrounds / accents
 $color-blush: #e4998d; // Dusty pink for highlights
 $color-deep-navy: #0f1a30; // Darker navy for headers / footers
 $color-rose-gold: #e4a0af; // Warm accent, like dusty-rose
@@ -39,3 +46,59 @@ $space-sm: 8px;
 $space-md: 16px;
 $space-lg: 32px;
 $space-xl: 64px;
+
+//Pixel size definitions
+$s-screen--xsmall: 375px; // Modern Phones
+$s-screen--small: 750px; // Modern Large Mobiles / Small Tablets
+$s-screen--medium: 1100px; // Large Tablet / Small Old Laptop
+$s-screen--large: 1350px; // Large Tablet Landscape / Average Laptop
+$s-screen--xlarge: 1650px; // Large Laptop / Average - Large Desktop
+$s-screen--xxlarge: 2000px; // 4K Deskop
+
+//Size definitions
+$s-screen--name-xsmall: 'xsmall';
+$s-screen--name-small: 'small';
+$s-screen--name-medium: 'medium';
+$s-screen--name-large: 'large';
+$s-screen--name-xlarge: 'xlarge';
+$s-screen--name-xxlarge: 'xxlarge';
+
+//Groups
+$s-xsmall-up: 'xsmall-up';
+$s-small-up: 'small-up';
+$s-medium-up: 'medium-up';
+$s-large-up: 'large-up';
+$s-xlarge-up: 'xlarge-up';
+$s-xxlarge-up: 'xxlarge-up';
+
+$s-small-down: 'small-down';
+$s-medium-down: 'medium-down';
+$s-xlarge-down: 'xlarge-down';
+
+//Breakpoints
+$s-screen--breakpoints: ($s-screen--name-xsmall '(max-width: #{$s-screen--small - 1})',
+  $s-screen--name-small '(min-width: #{$s-screen--small}) and (max-width: #{$s-screen--medium - 1})',
+  $s-screen--name-medium '(min-width: #{$s-screen--medium}) and (max-width: #{$s-screen--large - 1})',
+  $s-screen--name-large '(min-width: #{$s-screen--large}) and (max-width: #{$s-screen--xlarge - 1})',
+  $s-screen--name-xlarge '(min-width: #{$s-screen--xlarge})',
+
+  $s-xsmall-up '(min-width: #{$s-screen--xsmall})',
+  $s-small-up '(min-width: #{$s-screen--small})',
+  $s-medium-up '(min-width: #{$s-screen--medium})',
+  $s-large-up '(min-width: #{$s-screen--large})',
+  $s-xlarge-up '(min-width: #{$s-screen--xlarge})',
+  $s-xxlarge-up '(min-width: #{$s-screen--xxlarge})',
+  $s-small-down '(max-width: #{$s-screen--small - 1})',
+  $s-medium-down '(max-width: #{$s-screen--medium - 1})',
+  $s-xlarge-down '(max-width: #{$s-screen--xlarge - 1})'
+);
+
+
+:export {
+  xsmall: $s-screen--xsmall;
+  small: $s-screen--small;
+  medium: $s-screen--medium;
+  large: $s-screen--large;
+  xlarge: $s-screen--xlarge;
+  xxlarge: $s-screen--xxlarge;
+}

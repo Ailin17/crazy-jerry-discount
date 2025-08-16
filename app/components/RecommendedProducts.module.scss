@@ -1,9 +1,9 @@
-@import '../styles/main.scss';
+@use '../styles/main'as *;
 
 .recommendedProducts {
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 0;
   position: relative;
-  background-color: $color-ivory;
+  background: linear-gradient($color-ivory, $color-soft-pink);
 
   .heading {
     font-size: 1.5rem;
@@ -11,10 +11,68 @@
     text-align: right;
   }
 
+  .stickyContainer {
+    position: relative;
+    top: 0;
+    min-height: 250vh;
+    padding-bottom: 2.5rem;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    min-height: 500px;
+    min-width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+  }
+
+  .swiperWrapper {
+    grid-area: 1 / 1 / 2 / 2;
+    min-width: 100%;
+    position: relative;
+    margin-top: 6.25rem;
+  }
+
+
+  .splitTitle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
+    grid-area: 1 / 1 / 2 / 2;
+    align-self: top;
+    margin-left: 20px;
+
+    span {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .rightText {
+      margin-left: 6rem;
+      display: block;
+    }
+  }
+
   .stamp {
     position: sticky;
     top: 0;
     margin: -120px 0;
+  }
+
+  .viewAll {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
   }
 
   .carousel {
@@ -65,6 +123,26 @@
 :global(.swiper-pagination-bullet-active) {
   background: #111;
 }
+
+@include media-query($s-small-up) {
+  .recommendedProducts {
+
+    .splitTitle {
+      font-size: 6rem;
+    }
+  }
+}
+
+@include media-query($s-medium-up) {
+  .recommendedProducts {
+
+    .splitTitle {
+      font-size: 8rem;
+    }
+  }
+}
+
+
 
 /* Optional: hide arrows on mobile if desired */
 /*

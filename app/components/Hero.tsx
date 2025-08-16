@@ -13,6 +13,9 @@ type Props = {
   image: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.Image, 'id' | 'url' | 'altText' | 'width' | 'height'>
   >
+  image2: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Image, 'id' | 'url' | 'altText' | 'width' | 'height'>
+  >
   cta1?: LinkType
   cta2?: LinkType
 }
@@ -79,6 +82,7 @@ import React, { useRef } from 'react'
 import gsap from 'gsap'
 import styles from './Hero.module.scss'
 import { useGSAP } from '@gsap/react'
+import LinkButton from './LinkButton'
 
 // type HeroProps = {
 //   leftImage: string
@@ -87,8 +91,9 @@ import { useGSAP } from '@gsap/react'
 //   subheading: string
 // }
 
-function Hero({ image, heading, paragraph }: Props) {
+function Hero({ image, image2, heading, paragraph, cta1, cta2 }: Props) {
   const container = useRef<HTMLDivElement>(null)
+  const hasCta = cta1?.url || cta2?.url
 
   useGSAP(() => {
     if (!container.current) return
@@ -99,34 +104,41 @@ function Hero({ image, heading, paragraph }: Props) {
       const overlay = el.querySelector(`.${styles.revealOverlay}`)
       const direction = el.getAttribute('data-hero-direction') || 'left'
 
-      // Map the direction string to GSAP transform properties
-      const directionMap: Record<string, any> = {
-        left: { xPercent: 0, to: { xPercent: 100 } },
-        right: { xPercent: 0, to: { xPercent: -100 } },
-        top: { yPercent: 0, to: { yPercent: 100 } },
-        bottom: { yPercent: 0, to: { yPercent: -100 } },
+      const directionMap: Record<string, { from: any; to: any }> = {
+        left: { from: { xPercent: 0 }, to: { xPercent: 100 } },
+        right: { from: { xPercent: 0 }, to: { xPercent: -100 } },
+        top: { from: { yPercent: 0 }, to: { yPercent: 100 } },
+        bottom: { from: { yPercent: 0 }, to: { yPercent: -100 } },
+        fade: {
+          from: { opacity: 0, scale: 1.1 },
+          to: { opacity: 1, scale: 1 },
+        },
       }
 
       const anim = directionMap[direction]
+      if (!anim) return
 
-      if (overlay && anim) {
-        gsap.set(overlay, anim) // set starting position
-        const tl = gsap.timeline({ delay: i * 0.3 })
+      const tl = gsap.timeline({ delay: i * 0.3 })
+
+      if (overlay) {
+        gsap.set(overlay, anim.from)
         tl.to(overlay, {
           ...anim.to,
           duration: 1.2,
           ease: 'power4.inOut',
         }).from(
           el,
-          {
-            scale: 2,
-            opacity: 0,
-            duration: 2,
-            ease: 'power4.out',
-            stagger: 2,
-          },
+          { scale: 2, opacity: 0, duration: 2, ease: 'power4.out', stagger: 2 },
           '-=1.1'
         )
+      } else {
+        gsap.set(el, anim.from)
+        gsap.to(el, {
+          ...anim.to,
+          duration: 1.5,
+          ease: 'power4.out',
+          delay: 1,
+        })
       }
     })
   }, [])
@@ -144,7 +156,7 @@ function Hero({ image, heading, paragraph }: Props) {
 
       <div
         className={styles.rightTopImage}
-        style={{ backgroundImage: `url(${image?.url})` }}
+        style={{ backgroundImage: `url(${image2?.url})` }}
         data-hero-animate
         data-hero-direction="right"
       >
@@ -153,11 +165,21 @@ function Hero({ image, heading, paragraph }: Props) {
 
       <div
         className={styles.rightBottomText}
-        // data-hero-animate
-        // data-hero-direction="bottom"
+        data-hero-animate
+        data-hero-direction="fade"
       >
         <h1>{heading}</h1>
         <p>{paragraph}</p>
+        {hasCta && (
+          <div className={styles.buttonWrapper} data-hero-button>
+            {cta1 && <LinkButton href={cta1.url}>{cta1.text}</LinkButton>}
+            {cta2 && (
+              <LinkButton href={cta2.url} variant="secondary">
+                {cta2.text}
+              </LinkButton>
+            )}
+          </div>
+        )}
       </div>
     </section>
   )

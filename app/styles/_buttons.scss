@@ -1,9 +1,12 @@
+@use 'variables'as *;
+@use 'mixins';
+
 .btn-primary {
-  @include button($color-rose-gold, $color-ivory);
+  @include mixins.button($color-rose-gold, $color-ivory);
 }
 
 .btn-secondary {
-  @include button($color-ivory, $color-deep-navy);
+  @include mixins.button($color-ivory, $color-deep-navy);
   border: 1px solid $color-deep-navy;
 
   &:hover {

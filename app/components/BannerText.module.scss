@@ -1,0 +1,28 @@
+@use '../styles/main'as *;
+
+.BannerText {
+  background-color: $color-soft-pink;
+  padding: 2rem 1rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 2rem;
+  min-height: calc(100vh - 20rem);
+
+  .heading {
+    max-width: 800px;
+    font-size: 3rem;
+    text-align: center;
+
+    span {
+      display: block;
+    }
+  }
+
+  .buttonWrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+}

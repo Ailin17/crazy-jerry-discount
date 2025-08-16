@@ -1,12 +1,11 @@
 import { type LoaderFunctionArgs } from '@shopify/remix-oxygen'
-import { useLoaderData, Await } from 'react-router'
-import { Suspense } from 'react'
+import { useLoaderData } from 'react-router'
 import { Image } from '@shopify/hydrogen'
-import { ProductItem } from '~/components/ProductItem'
 import { PAGE_QUERY } from '~/graphql/Page.graphql'
 import Hero, { LinkType } from '~/components/Hero'
 import RecommendedProducts from '~/components/RecommendedProducts'
-import { AnimationTest, AnimationTest2 } from '~/components/AnimationTest'
+import BannerText from '~/components/BannerText'
+import BannerVideo, { VideoMetafield } from '~/components/BannerVideo'
 
 export async function loader({ context }: LoaderFunctionArgs) {
   const deferredData = loadDeferredData(context)
@@ -45,6 +44,7 @@ function loadDeferredData(context: LoaderFunctionArgs['context']) {
 export default function Homepage() {
   const { page, featuredCollection, recommendedProducts } =
     useLoaderData<typeof loader>()
+  console.log({ page })
   const heading = page.metafields.find(
     (f: any) => f.key === 'hero_heading'
   )?.value
@@ -52,13 +52,18 @@ export default function Homepage() {
     (f: any) => f.key === 'hero_paragraph'
   )?.value
   const imageMeta = page.metafields.find((f: any) => f.key === 'hero_image')
+  const imageMeta2 = page.metafields.find((f: any) => f.key === 'hero_image_2')
   const ctaLink = JSON.parse(
     page.metafields.find((f: any) => f.key === 'cta_link').value
   )
   const ctaLink2 = JSON.parse(
     page.metafields.find((f: any) => f.key === 'cta_link_2').value
   )
-  console.log({ ctaLink })
+  const videoMetafield = page.metafields.find(
+    (f: any) => f.key === 'video_banner'
+  )
+
+  console.log(videoMetafield)
   return (
     <div className="home">
       {page && (
@@ -66,6 +71,7 @@ export default function Homepage() {
           heading={heading}
           paragraph={paragraph}
           image={imageMeta.reference.image}
+          image2={imageMeta2.reference.image}
           cta1={ctaLink as LinkType}
           cta2={ctaLink2 as LinkType}
         />
@@ -78,8 +84,12 @@ export default function Homepage() {
       {recommendedProducts && (
         <RecommendedProducts products={recommendedProducts} />
       )}
-      <AnimationTest />
-      <AnimationTest2 />
+
+      <BannerText />
+      <BannerVideo
+        videoMetafield={videoMetafield as VideoMetafield}
+        heading={'A whole new world'}
+      />
     </div>
   )
 }

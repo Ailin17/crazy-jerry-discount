@@ -1,13 +1,16 @@
+@use 'variables'as *;
+@use 'mixins';
+
 h1 {
-  @include heading(1);
+  @include mixins.heading(1);
 }
 
 h2 {
-  @include heading(2);
+  @include mixins.heading(2);
 }
 
 h3 {
-  @include heading(3);
+  @include mixins.heading(3);
 }
 
 body {

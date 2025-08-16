@@ -7,9 +7,8 @@ import {
 } from '@shopify/hydrogen'
 import type { HeaderQuery, CartApiQueryFragment } from 'storefrontapi.generated'
 import { useAside } from '~/components/Aside'
-import styles from './Header.module.scss'
-import { Image } from '@shopify/hydrogen'
 import { SearchIcon, ShoppingCart, Telescope, User } from 'lucide-react'
+import styles from './Header.module.scss'
 
 interface HeaderProps {
   header: HeaderQuery

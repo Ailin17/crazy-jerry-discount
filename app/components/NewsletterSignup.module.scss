@@ -1,0 +1,51 @@
+@use '../styles/main'as *;
+
+.newsletter {
+  background: $color-ivory;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid lightgray;
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: $color-deep-navy;
+  }
+
+  .subtext {
+    color: $color-navy;
+    margin-bottom: 1.5rem;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+  }
+
+  .input {
+    flex-grow: 1;
+    min-width: 250px;
+    padding: 0.75rem 1rem;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .success {
+    margin-top: 1rem;
+    color: green;
+  }
+
+  .error {
+    margin-top: 1rem;
+    color: red;
+  }
+}
