@@ -1,0 +1,7 @@
+{
+  "Div with styles className": {
+    "prefix": "div.",
+    "body": ["<div className={styles.${1:className}}>$0</div>"],
+    "description": "Create a div with className from styles",
+  },
+}

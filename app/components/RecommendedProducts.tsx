@@ -52,12 +52,12 @@ export default function RecommendedProducts({
     // Split heading apart
     tl.to(
       leftTextRef.current,
-      { xPercent: -50, ease: 'power2.out', opacity: 0 },
+      { xPercent: -100, ease: 'power2.out', opacity: 0 },
       '<.5'
     )
     tl.to(
       rightTextRef.current,
-      { xPercent: 50, ease: 'power2.out', opacity: 0 },
+      { xPercent: 100, ease: 'power2.out', opacity: 0 },
       '<'
     )
 

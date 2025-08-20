@@ -73,8 +73,8 @@
 .hero {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr min-content 2fr;
-  height: 100vh;
+  grid-template-rows: repeat(3, min-content);
+  min-height: 100vh;
   gap: 1rem;
 
   .leftImage,
@@ -93,11 +93,37 @@
   .rightTopImage {
     background-size: cover;
     background-position: center;
+    aspect-ratio: 2/1;
   }
 
   .rightBottomText {
     padding: 2rem;
-    background: white;
+    background: $color-ivory;
+  }
+
+  .borderBox,
+  .borderBox2 {
+    border: thick double $color-navy;
+    position: absolute;
+    z-index: 2;
+    outline-offset: -5px;
+  }
+
+  .borderBox {
+    top: 20px;
+    right: 20px;
+    border-color: $color-navy $color-navy transparent transparent;
+    outline-color: $color-navy $color-navy transparent transparent;
+    height: 40px;
+    width: 110px;
+  }
+
+  .borderBox2 {
+    bottom: 20px;
+    left: 20px;
+    border-color: transparent transparent $color-navy $color-navy;
+    height: 100px;
+    width: 60px;
   }
 
   .revealOverlay {
@@ -106,7 +132,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff; // or your overlay color
+    background: $color-ivory;
     pointer-events: none;
     z-index: 0;
   }
@@ -118,6 +144,12 @@
     align-items: center;
   }
 
+  .leftImageLabel {
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+  }
+
   @include media-query($s-medium-up) {
     grid-template-columns: 4fr 6fr;
     grid-template-rows: 6fr 4fr;
@@ -125,6 +157,20 @@
 
     .leftImage {
       grid-row: 1 / span 2;
+    }
+
+    .borderBox {
+      height: 70px;
+      width: 160px;
+    }
+
+    .borderBox2 {
+      height: 150px;
+      width: 110px;
+    }
+
+    .rightTopImage {
+      aspect-ratio: unset;
     }
   }
 }

@@ -2,7 +2,7 @@
 
 .header {
   align-items: center;
-  background: $color-navy;
+  background: $color-deep-navy;
   color: $color-ivory;
   display: flex;
   height: var(--header-height);
@@ -25,6 +25,15 @@
   }
 }
 
+.Logo {
+  display: flex;
+  gap: .5rem;
+  letter-spacing: .5ch;
+  align-items: center;
+  font-size: 2.5rem;
+  font-family: $font-accent;
+}
+
 .menuMobileToggle {
   @media (min-width: 48em) {
     display: none;
@@ -44,11 +53,16 @@
   @media (min-width: 45em) {
     display: flex;
     margin-left: 3rem;
+    height: 100%;
+    align-items: center;
   }
 }
 
-.header-menu-item {
+.headerMenuItem {
   cursor: pointer;
+  height: 100%;
+  display: grid;
+  align-items: center;
 }
 
 .headerCtas {
@@ -67,3 +81,63 @@
 //     gap: 1rem;
 //   }
 // }
+
+.hasMegaMenu {
+
+  &:hover .megaMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  background: $color-ivory;
+  color: $color-deep-navy;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  display: flex;
+  justify-content: start;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all .2s ease-in-out;
+  z-index: 100;
+}
+
+.megaMenuContent {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  max-width: 1200px;
+  width: 100%;
+  gap: 2rem;
+}
+
+.submenu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+
+  a {
+    font-weight: bold;
+    color: $color-deep-navy;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.preview {
+  img {
+    max-width: 100%;
+    border-radius: .5rem;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+  }
+}

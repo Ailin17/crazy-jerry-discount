@@ -10,10 +10,12 @@
   border-radius: $radius;
   border: none;
   cursor: pointer;
-  font-family: $font-accent;
+  font-family: $font-body;
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;
   min-width: 2.5rem;
+  font-weight: 700;
+  text-align: center;
 
   &:hover {
     filter: brightness(0.9);

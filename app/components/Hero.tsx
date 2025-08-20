@@ -151,18 +151,19 @@ function Hero({ image, image2, heading, paragraph, cta1, cta2 }: Props) {
         data-hero-animate
         data-hero-direction="left"
       >
+        <div className={styles.borderBox}></div>
+        <span className={styles.leftImageLabel}>Dianna Jacket - $149</span>
         <span className={styles.revealOverlay}></span>
       </div>
-
       <div
         className={styles.rightTopImage}
         style={{ backgroundImage: `url(${image2?.url})` }}
         data-hero-animate
         data-hero-direction="right"
       >
+        <div className={styles.borderBox2}></div>
         <span className={styles.revealOverlay}></span>
       </div>
-
       <div
         className={styles.rightBottomText}
         data-hero-animate

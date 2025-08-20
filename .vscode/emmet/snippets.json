@@ -1,0 +1,9 @@
+{
+  "html": {
+    "snippets": {
+      "div": "<div className={styles.${1}}>$0</div>",
+      "p": "<p className={styles.${1}}>$0</p>",
+      "span": "<span className={styles.${1}}>$0</span>"
+    }
+  }
+}

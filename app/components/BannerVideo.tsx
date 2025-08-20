@@ -36,12 +36,13 @@ const BannerVideo = ({
 
   return (
     <section className={styles.bannerVideo}>
+      <div className={styles.overlay}></div>
       <Video
         className={styles.video}
         data={{
           sources: [
             {
-              url: 'https://cdn.shopify.com/videos/c/o/v/fa15053ec2cd4523bb1104e3eacff823.mp4',
+              url: 'https://cdn.shopify.com/videos/c/o/v/939e3f46e234447faf2c9800f9f30ac9.mp4',
               mimeType: videoMetafield.reference.sources[0].mimeType,
             },
           ],
@@ -57,7 +58,17 @@ const BannerVideo = ({
       />
       {(heading || text) && (
         <div className={styles.overlayText}>
-          {heading && <h2>{heading}</h2>}
+          <div className={styles.heading}>
+            <h2>
+              <span>Crafted for </span>
+              <span>confidence</span>
+            </h2>
+            <p>
+              Each garment is thoughtfully designed to celebrate femininity with
+              grace. From elevated essentials to statement pieces, we bring you
+              fashion that feels as good as it looks.
+            </p>
+          </div>
           {text && <p>{text}</p>}
         </div>
       )}

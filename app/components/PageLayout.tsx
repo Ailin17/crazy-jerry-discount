@@ -15,6 +15,7 @@ import {
 } from '~/components/SearchFormPredictive'
 import { SearchResultsPredictive } from '~/components/SearchResultsPredictive'
 import NewsletterSignup from './NewsletterSignup'
+import TopBar from './TopBar'
 
 interface PageLayoutProps {
   cart: Promise<CartApiQueryFragment | null>
@@ -38,6 +39,7 @@ export function PageLayout({
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside header={header} publicStoreDomain={publicStoreDomain} />
+      <TopBar />
       {header && (
         <Header
           header={header}

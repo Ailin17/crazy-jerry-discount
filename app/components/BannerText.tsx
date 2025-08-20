@@ -38,7 +38,7 @@ const BannerText = ({
       stagger: 0.2,
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'top 90%',
+        start: 'top 150%',
       },
     })
 
@@ -49,8 +49,8 @@ const BannerText = ({
         duration: 1,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: el,
-          start: 'top 110%',
+          trigger: containerRef.current,
+          start: 'top 120%',
         },
       })
     })

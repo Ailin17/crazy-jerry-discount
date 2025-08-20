@@ -13,8 +13,7 @@
 
   .stickyContainer {
     position: relative;
-    top: 0;
-    min-height: 250vh;
+    min-height: 200vh;
     padding-bottom: 2.5rem;
   }
 
@@ -138,6 +137,7 @@
 
     .splitTitle {
       font-size: 8rem;
+      justify-self: center
     }
   }
 }

@@ -2,7 +2,7 @@
 @use 'mixins';
 
 .btn-primary {
-  @include mixins.button($color-rose-gold, $color-ivory);
+  @include mixins.button($color-rose-gold, $color-deep-navy);
 }
 
 .btn-secondary {

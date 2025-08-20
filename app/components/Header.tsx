@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import { Await, NavLink, useAsyncValue } from 'react-router'
 import {
   type CartViewPayload,
@@ -9,6 +9,62 @@ import type { HeaderQuery, CartApiQueryFragment } from 'storefrontapi.generated'
 import { useAside } from '~/components/Aside'
 import { SearchIcon, ShoppingCart, Telescope, User } from 'lucide-react'
 import styles from './Header.module.scss'
+
+const MEGA_MENU = {
+  title: 'Catalog',
+  items: [
+    {
+      id: 'sub1',
+      title: 'Dresses and Gowns',
+      url: '/collections/men',
+      image:
+        'https://cdn.shopify.com/s/files/1/0777/5997/1548/files/8109-Red_Anley_1.webp?v=1755152164',
+    },
+    {
+      id: 'sub2',
+      title: 'Everyday',
+      url: '/collections/women',
+      image:
+        'https://cdn.shopify.com/s/files/1/0777/5997/1548/files/pexels-thelazyartist-1488507.jpg?v=1755143047',
+    },
+    {
+      id: 'sub3',
+      title: 'Accessories',
+      url: '/collections/accessories',
+      image:
+        'https://cdn.shopify.com/s/files/1/0777/5997/1548/files/Untitled-3-min.png?v=1755348925',
+    },
+  ],
+}
+function MegaMenu() {
+  const [hovered, setHovered] = useState<string | null>(null)
+
+  const activeItem =
+    MEGA_MENU.items.find((i) => i.id === hovered) || MEGA_MENU.items[0]
+
+  return (
+    <div className={styles.megaMenu}>
+      <div className={styles.megaMenuContent}>
+        <ul className={styles.submenu}>
+          {MEGA_MENU.items.map((sub) => (
+            <li
+              key={sub.id}
+              onMouseEnter={() => setHovered(sub.id)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <NavLink to={sub.url}>{sub.title}</NavLink>
+            </li>
+          ))}
+        </ul>
+        <div className={styles.preview}>
+          {activeItem?.image && (
+            <img src={activeItem.image} alt={activeItem.title} width={300} />
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 interface HeaderProps {
   header: HeaderQuery
@@ -33,9 +89,12 @@ export function Header({
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
         {image ? (
           // <Image data={image} width={80} sizes="" />
-          <Telescope size={80} />
+          <div className={styles.Logo}>
+            <Telescope size={80} strokeWidth={1} />
+            <strong>MCB</strong>
+          </div>
         ) : (
-          <strong>MC</strong>
+          <strong>MCB</strong>
         )}
       </NavLink>
       <HeaderMenu
@@ -62,9 +121,9 @@ export function HeaderMenu({
 }) {
   const className = `header-menu-${viewport}`
   const { close } = useAside()
-
+  console.log(menu)
   return (
-    <nav className={className} role="navigation">
+    <nav className={styles[className]} role="navigation">
       {viewport === 'mobile' && (
         <NavLink
           end
@@ -79,25 +138,47 @@ export function HeaderMenu({
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
         if (!item.url) return null
 
-        // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
           item.url.includes(publicStoreDomain) ||
           item.url.includes(primaryDomainUrl)
             ? new URL(item.url).pathname
             : item.url
+
+        if (item.title.toLowerCase() === 'catalog') {
+          return (
+            <div
+              className={`${styles.headerMenuItem} ${styles.hasMegaMenu}`}
+              key={item.id}
+            >
+              <NavLink
+                className={styles.link}
+                end
+                to={url}
+                prefetch="intent"
+                style={activeLinkStyle}
+              >
+                {item.title.toUpperCase()}
+              </NavLink>
+              <MegaMenu />
+            </div>
+          )
+        }
+
         return (
-          <NavLink
-            className="header-menu-item"
-            end
-            key={item.id}
-            onClick={close}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
-          >
-            {item.title}
-          </NavLink>
+          <div className={styles.headerMenuItem}>
+            <NavLink
+              className={styles.link}
+              end
+              key={item.id}
+              onClick={close}
+              prefetch="intent"
+              style={activeLinkStyle}
+              to={url}
+            >
+              {item.title.toUpperCase()}
+            </NavLink>
+          </div>
         )
       })}
     </nav>
@@ -139,7 +220,7 @@ function HeaderMenuMobileToggle() {
 function SearchToggle() {
   const { open } = useAside()
   return (
-    <button className="reset" onClick={() => open('search')}>
+    <button className={styles.reset} onClick={() => open('search')}>
       <SearchIcon size={24} />
     </button>
   )
@@ -236,7 +317,7 @@ function activeLinkStyle({
   isPending: boolean
 }) {
   return {
-    // fontWeight: isActive ? 'bold' : undefined,
+    fontWeight: isActive ? 'bold' : undefined,
     color: isPending ? 'white' : 'white',
   }
 }

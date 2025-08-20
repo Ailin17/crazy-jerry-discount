@@ -58,7 +58,7 @@ function AccountMenu() {
     isPending: boolean
   }) {
     return {
-      // fontWeight: isActive ? 'bold' : undefined,
+      fontWeight: isActive ? 'bold' : undefined,
       color: isPending ? 'grey' : 'black',
     }
   }

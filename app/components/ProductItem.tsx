@@ -45,6 +45,10 @@ export function ProductItem({
   const image = product.featuredImage
   const secondMedia = product.media?.edges?.[1]?.node
   const hasVideo = secondMedia?.mediaContentType === 'VIDEO'
+
+  if (hasVideo) {
+    console.log({ secondMedia })
+  }
   return (
     <Link
       className="product-item"
@@ -59,7 +63,7 @@ export function ProductItem({
             data={image}
             loading={loading}
             sizes="(min-width: 45em) 400px, 100vw"
-            className={secondMedia && styles.top}
+            className={secondMedia ? styles.top : styles.solo}
           />
         )}
         {secondMedia && secondMedia.image && (

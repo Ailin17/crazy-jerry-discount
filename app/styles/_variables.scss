@@ -14,8 +14,24 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
 $font-heading: 'Xanh Mono';
-$font-body:'Xanh Mono';
+$font-body:'Montserrat';
 $font-accent: 'Xanh Mono';
 // Colors
 $color-ivory: #faf9f6;
@@ -25,11 +41,11 @@ $color-dusty-rose: #e4b7a0;
 $color-sage-green: #a2b9a1;
 
 $color-ivory: #faf9f6; // Neutral background / text
-$color-navy: #1b2a49; // Deep navy for primary elements
+$color-navy: #162b53; // Deep navy for primary elements
 $color-soft-pink: #F0E2E7; // Light pink for backgrounds / accents
 $color-blush: #e4998d; // Dusty pink for highlights
-$color-deep-navy: #0f1a30; // Darker navy for headers / footers
-$color-rose-gold: #e4a0af; // Warm accent, like dusty-rose
+$color-deep-navy: #06063c; // Darker navy for headers / footers
+$color-rose-gold: #dfc1cb; // Warm accent, like dusty-rose
 $color-gray-blue: #b0c1d2; // Soft neutral for subtle backgrounds
 
 
